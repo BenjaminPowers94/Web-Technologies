@@ -1,0 +1,80 @@
+﻿@model IEnumerable<HMBPSail.Models.Member>
+
+@{
+    ViewData["Title"] = "Member List"; <!-- Title of member list-->
+}
+
+<h2>Member List</h2> <!-- heading of member list-->
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearJoined)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskExempt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UseCanadaPost)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Index" asp-controller="HMBPMemberships" asp-route-memberId="@item.MemberId"
+                       asp-route-fullName="@item.FullName">
+
+                        @Html.DisplayFor(modelItem => item.FullName) @*added to  index view*@
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomePhone) @*added to  index view*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email) @*added to  index view*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearJoined) @*added to  index view*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment) @*added to  index view*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaskExempt) @*added to  index view*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UseCanadaPost) @*added to  index view*@
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MemberId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.MemberId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MemberId">Delete</a> |
+                    <a asp-area="" asp-controller="HMBPBoatType" asp-action="Index">Show Boats</a>
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
